@@ -1,1 +1,3 @@
-** This is my first repo dedicated only to Js learning **
+# JS learning
+
+This is my **first repo dedicated only to Js learning**.
