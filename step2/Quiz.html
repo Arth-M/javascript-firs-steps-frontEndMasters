@@ -120,6 +120,31 @@
     // const isCorrect = (guess) => { return guess === fact.answer } ;
 
 
+ 
+    // optionButtons[0].addEventListener("click", (event) => {
+    //   event.target.innerHTML = event.target.innerHTML.toUpperCase();
+    //   // event.target.innerHTML = event.target.innerHTML.toUpperCase();
+    //   // console.log(event.target);
+    // });
+
+    // optionButtons[1].addEventListener("click", (event) => {
+    //   event.target.innerHTML = event.target.innerHTML.toUpperCase();
+    // });
+
+    for (let i = 0; i < optionButtons.length; i++) {
+    // for (element in optionButtons  => {
+      optionButtons[i].addEventListener("click", (event) => {
+        event.target.innerHTML = event.target.innerHTML.toUpperCase();
+      });
+    };
+
+    let pageTitle = document.querySelector('h1');
+    pageTitle.addEventListener("mouseover", e => {
+      e.target.innerHTML = "Hovering";
+    });
+    pageTitle.addEventListener("mouseout", e => {
+      e.target.innerHTML = "Quiz.js";
+    });
 
     // TODO 6A: Use a for loop to add a click event listener to each of the optionButtons
             // TODO 6B: Within the event handler function, display the fact's explanation by setting the text of the explanation element
