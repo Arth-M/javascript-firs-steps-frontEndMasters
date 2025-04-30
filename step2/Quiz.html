@@ -179,15 +179,17 @@
 
     for (let element of optionButtons) {
       element.addEventListener("click", (event) => {
-        explanation.innerHTML = fact.explanation;
+
         for (let e of optionButtons) {
           disable(e);
         }
-        let answerCorrect = event.target.value === fact.answer.toString() ? 1 : null ;
-        if (answerCorrect) {
+        // let answerCorrect = isCorrect(event.target.value) ? 1 : null ;
+        if (isCorrect(event.target.value) ) {
           event.target.classList.add('correct');
+          explanation.innerHTML = "Correct ! " + fact.explanation;
         } else {
           event.target.classList.add('incorrect');
+          explanation.innerHTML = "Gosh no ! " + fact.explanation;
         }
       });
     }
