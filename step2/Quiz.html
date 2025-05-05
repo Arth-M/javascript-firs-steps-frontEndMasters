@@ -195,6 +195,28 @@
     }
 
 
+    const spices = [
+    {name: "Emma", nickname: "Baby"},
+    {name: "Geri", nickname: "Ginger"},
+    {name: "Mel B", nickname: "Scary"},
+    {name: "Mel C", nickname: "Sporty"},
+    {name: "Victoria", nickname: "Posh"}
+    ];
+    const nicknames = spices.map(s => s.nickname + " Spice");
+
+    const spices_names = spices.map((spice) => spice.name);
+    console.log(spices_names);
+
+    const spices_endInY = spices.filter((spice) => spice.nickname.endsWith("y")); // => spice.nickname[spice.nickname.length - 1 ]
+    const spices_endInY2 = spices.filter((spice) => spice.nickname[spice.nickname.length - 1 ] === "y" );
+    console.log("spicesEndInY", spices_endInY);
+    console.log("spicesEndInY2", spices_endInY2);
+    spices[1].nickname = "Gingery";
+    spices[0].nickname = "Babe";
+    console.log(spices_endInY);
+
+    let doubleYspices = [...spices_names, ...spices_endInY]; 
+
 
   </script>
 
