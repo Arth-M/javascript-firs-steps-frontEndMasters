@@ -112,8 +112,22 @@
     function getBreedFromURL(url) {
         // The string method .split(char) may come in handy
         // Try to use destructuring as much as you can
-
+        let urlSplit = url.split("/");
+        let [,,,,breed] = urlSplit;
+        if (breed.split("-").length > 1) {
+          let [name1, name2] = breed.split("-");
+          return `${name2} ${name1}`;
+          // let breed_array = breed.split("-");
+          // return breed_array.reverse().join(" ")
+        } else {
+          return breed;
+        }
     }
+
+    test = { naming1: "lalala", variablename2: 18, otherone: true};
+    let {naming1, variablename2} = test;
+    console.log(naming1);
+    console.log(variablename2);
 
 
 
