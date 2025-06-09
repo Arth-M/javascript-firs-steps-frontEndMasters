@@ -125,9 +125,11 @@
     }
 
     test = { naming1: "lalala", variablename2: 18, otherone: true};
+    let {title} = document;
     let {naming1, variablename2} = test;
     console.log(naming1);
     console.log(variablename2);
+    console.log(title);
 
 
 
@@ -136,7 +138,14 @@
     // then parse the response as a JSON object,
     // finally return the "message" property of its body
     async function fetchMessage(url) {
-
+      // fetch(url)
+      // .then(response => response.json())
+      // .then(let {message} = response.message)
+      // return message;
+      const response = await fetch(url);
+      let responseBodyParsed = await response.json();
+      let {message} = responseBodyParsed;
+      return message;
     }
 
 
