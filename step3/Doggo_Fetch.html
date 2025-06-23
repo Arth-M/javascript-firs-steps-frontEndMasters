@@ -124,7 +124,7 @@
         }
     }
 
-    test = { naming1: "lalala", variablename2: 18, otherone: true};
+    const test = { naming1: "lalala", variablename2: 18, otherone: true};
     let {title} = document;
     let {naming1, variablename2} = test;
     console.log(naming1);
@@ -148,6 +148,14 @@
       return message;
     }
 
+    function nextStep() {
+      const next = document.querySelector(`button[value="next"]`);
+      next.addEventListener("click", () => {
+        window.location.reload();
+        loadQuizData().then(result => renderQuiz(...result))
+      // let quizData = await quiz.json();
+      });
+    }
 
     // Function to add the multiple-choice buttons to the page
     function renderButtons(choicesArray, correctAnswer) {
@@ -161,6 +169,11 @@
                 e.target.classList.add("incorrect");
                 document.querySelector(`button[value="${correctAnswer}"]`).classList.add("correct");
             }
+            let button = document.createElement("button");
+            button.value = "next";
+            button.textContent = "next";
+            options.appendChild(button);
+            nextStep();
         }
 
         const options = document.getElementById("options"); // Container for the multiple-choice buttons
@@ -170,6 +183,18 @@
         // Create a button element whose name, value, and textContent properties are the value of that choice,
         // attach a "click" event listener with the buttonHandler function,
         // and append the button as a child of the options element
+        choicesArray.forEach(element => {
+          // forEach is good bit will iterate over the entire loop even if
+          // you break the loop or return a value,
+          // for (let ... in ...) return keys/'string properties' of an object
+          // for (let ... of  ...) return the values of an array or string etc...
+          let button = document.createElement("button");
+          button.name = element;
+          button.textContent = element;
+          button.value = element;
+          button.addEventListener("click", buttonHandler);
+          options.appendChild(button);
+        });
 
     }
 
@@ -202,9 +227,9 @@
     // TODO 5
     // Asynchronously call the loadQuizData() function,
     // Then call renderQuiz() with the returned imageUrl, correctAnswer, and choices
-
-
-
+      let quiz = await loadQuizData();
+      // let quizData = await quiz.json();
+      renderQuiz(...quiz);
 
   </script>
 
